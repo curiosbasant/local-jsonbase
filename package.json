@@ -15,5 +15,8 @@
     "database",
     "jsonbase"
   ],
+  "repository": "github:CuriosBasant/local-jsonbase",
+  "homepage": "https://github.com/CuriosBasant/local-jsonbase#readme",
+  "bugs": "https://github.com/CuriosBasant/local-jsonbase/issues",
   "license": "MIT"
 }
