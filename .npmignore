@@ -1,0 +1,15 @@
+node_modules
+dummy-data
+*.private.ts
+.env
+.vscode
+private
+*.log
+*.backup
+.DS_Store
+.lock
+*.djs
+src
+app
+tsconfig.json
+.gitignore
