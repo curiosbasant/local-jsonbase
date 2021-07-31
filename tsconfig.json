@@ -3,24 +3,23 @@
   "display": "Node 14",
   "compilerOptions": {
     "target": "ES2020",
-    "lib": ["esnext"],
-    "module": "commonjs",
+    "lib": ["ESNext"],
+    "module": "CommonJS",
 
-    "rootDir": "src",
-    "outDir": "lib",
-    // "baseUrl": "app",
-    // "paths": { "json-db": ["./json-db"] },
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "declarationDir": "./lib/typings",
     "declaration": true,
-    "removeComments": true,
-    "moduleResolution": "node",
-    "inlineSourceMap": true,
+    "sourceMap": true,
 
-    "skipDefaultLibCheck": true,
     "strict": true,
-    "esModuleInterop": true,
+    "removeComments": true,
+    "moduleResolution": "Node",
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "skipDefaultLibCheck": true,
+    "esModuleInterop": true
   },
 
-  "exclude": ["node_modules", "private"]
+  "exclude": ["node_modules", "private", "lib"]
 }

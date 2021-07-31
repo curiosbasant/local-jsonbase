@@ -9,7 +9,6 @@ export default class LocalJSONBase {
   }
   collection<T>(collectionName: string) {
     return new Collection<T>(this, collectionName)
-    // fs.readFile(`${this.rootFolder}/${collectionName}`, (err, content) => {})
   }
 }
 
