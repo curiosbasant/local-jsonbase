@@ -13,3 +13,4 @@ src
 app
 tsconfig.json
 .gitignore
+docs
