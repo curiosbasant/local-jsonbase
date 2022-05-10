@@ -18,6 +18,6 @@ export default class Collection<C = DocumentData> {
   }
 
   add(data: C) {
-    return this.doc().create(data)
+    return this.doc(generateRandomId()).create(data)
   }
 }

@@ -11,3 +11,5 @@ private
 .lock
 *.djs
 docs
+tests
+delete_me

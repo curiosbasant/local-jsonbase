@@ -7,6 +7,7 @@ import { generateRandomId } from "./utils"
 export type DocumentData = Record<string, any>
 type SetOptions = { merge?: boolean; mergeFields?: string[] }
 
+// So it dont have other write methods
 export class DocumentWithoutId<D> {
   readonly path: string
 
@@ -26,13 +27,14 @@ export class DocumentWithoutId<D> {
       await fs.writeFile(this.filePath, JSON.stringify(obj, null, 2))
     })
     this.save(obj)
+    return this
   }
 
   protected async save(obj: D | null) {
     this.parent.cache.set(this.id, obj)
     // await fs.writeFile(this.filePath, JSON.stringify(obj, null, 2))
   }
-  protected createFile() {}
+
   protected get filePath() {
     return `${this.path}.json`
   }
@@ -43,10 +45,16 @@ export default class Document<D = DocumentData> extends DocumentWithoutId<D> {
     super(parent, docId)
   }
 
+  /** Get the collection reference within `this` doc */
   collection<C>(collectionName: string): Collection<C> {
     return new Collection<C>(this, collectionName)
   }
 
+  /**
+   * Get the data from the doc file
+   * @param fromCache - A boolean value, indicating whether to try get the data from cache. Defaults to `true`
+   * @returns The doc file data if exists, `null` otherwise
+   * */
   async get(fromCache = true): Promise<D | null> {
     if (fromCache && this.parent.cache.has(this.id)) return <D>this.parent.cache.get(this.id)
 
@@ -61,7 +69,13 @@ export default class Document<D = DocumentData> extends DocumentWithoutId<D> {
     return obj
   }
 
-  set(data: Partial<D>, merge: true): Promise<void>
+  /**
+   * Tries to update the doc file, if exists.
+   * @param data - The data object to set
+   * @param merge - A boolean value, indicating whether to merge or replace content of doc file data, if already exists
+   * @returns `this`
+   * */
+  set(data: Partial<D>, merge: true): Promise<this>
   async set(data: D, merge = false) {
     let toSave = data
     if (merge) {
@@ -74,8 +88,14 @@ export default class Document<D = DocumentData> extends DocumentWithoutId<D> {
     })
 
     this.save(toSave)
+    return this
   }
 
+  /**
+   * Tries to update the doc file, if exists.
+   * @param data - The data object to update
+   * @returns The updated doc file data
+   * */
   async update(data: Partial<D>) {
     const draft = await this.get()
     if (draft == null) {
@@ -87,6 +107,10 @@ export default class Document<D = DocumentData> extends DocumentWithoutId<D> {
     return obj
   }
 
+  /**
+   * Tries to delete the doc file, if exists.
+   * @returns boolean - if successful
+   * */
   async delete() {
     try {
       await fs.unlink(this.filePath)

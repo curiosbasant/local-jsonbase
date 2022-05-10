@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
 import Collection from "./Collection"
+import { DocumentData } from "./Document"
 
 export default class LocalJsonBase {
   readonly rootFolder: string
@@ -8,7 +9,7 @@ export default class LocalJsonBase {
   constructor(rootFolder: string) {
     this.rootFolder = path.join(path.dirname(require.main!.filename), rootFolder)
   }
-  collection<C>(collectionName: string) {
+  collection<C = DocumentData>(collectionName: string) {
     return new Collection<C>(this, collectionName)
   }
 
