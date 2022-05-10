@@ -1,7 +1,7 @@
 {
   "name": "local-jsonbase",
   "description": "A convenient local json-based database system, which requires no internet connection.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "typings": "lib/typings",
   "author": "CuriosBasant <basantbrpl@gmail.com>",
