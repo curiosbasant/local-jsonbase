@@ -7,7 +7,7 @@ export default class LocalJsonBase {
   readonly rootFolder: string
 
   constructor(rootFolder: string) {
-    this.rootFolder = path.join(path.dirname(require.main!.filename), rootFolder)
+    this.rootFolder = path.join(process.cwd(), rootFolder)
   }
   collection<C = DocumentData>(collectionName: string) {
     return new Collection<C>(this, collectionName)

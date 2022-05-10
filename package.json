@@ -4,6 +4,9 @@
   "version": "0.2.0",
   "main": "lib/index.js",
   "typings": "lib/typings",
+  "files": [
+    "lib"
+  ],
   "author": "CuriosBasant <basantbrpl@gmail.com>",
   "scripts": {
     "doc": "typedoc --out docs src/index.ts",

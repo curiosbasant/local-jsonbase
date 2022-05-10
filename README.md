@@ -11,7 +11,8 @@ yarn add local-jsonbase
 ## Example
 
 ```js
-import JsonBase from "local-jsonbase"
+// import {default as JsonBase} from "local-jsonbase"
+const { default: JsonBase } = require("local-jsonbase")
 
 const jsonBase = new JsonBase("database")
 const docRef = await jsonBase.collection("users").add({
