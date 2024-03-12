@@ -11,12 +11,14 @@ export default class Collection<C = DocumentData> {
     this.path = path.join(parent.path, name)
   }
 
+  /** Gets a document reference to the specified path */
   doc(): DocumentWithoutId<C>
   doc(docId: string): Document<C>
   doc(docId?: string) {
     return docId ? new Document<C>(this, docId) : new DocumentWithoutId<C>(this)
   }
 
+  /** Creates and adds a new document in the collection with given data, assigning random auto generated id */
   add(data: C) {
     return this.doc(generateRandomId()).create(data)
   }

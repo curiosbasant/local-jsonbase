@@ -1,15 +1,15 @@
 {
   "name": "local-jsonbase",
-  "description": "A convenient local json-based database system, which requires no internet connection.",
+  "description": "A convenient offline local json-based database system, which requires no setup.",
   "version": "0.2.1",
   "main": "lib/index.js",
   "typings": "lib/typings",
   "files": [
     "lib"
   ],
-  "author": "CuriosBasant <basantbrpl@gmail.com>",
   "scripts": {
     "doc": "typedoc --out docs src/index.ts",
+    "prepublishOnly": "tsc",
     "test": ""
   },
   "dependencies": {},
@@ -22,10 +22,12 @@
   "keywords": [
     "json",
     "database",
+    "jsonstore",
     "jsonbase"
   ],
   "repository": "github:CuriosBasant/local-jsonbase",
   "homepage": "https://github.com/CuriosBasant/local-jsonbase#readme",
   "bugs": "https://github.com/CuriosBasant/local-jsonbase/issues",
+  "author": "CuriosBasant <basantbrpl@gmail.com>",
   "license": "MIT"
 }
